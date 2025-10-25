@@ -1,4 +1,4 @@
-StoreFrontUI storeFront;
+StoreFront storeFront;
 LogoBanner logoBanner;
 GlassPanels glassPanels;
 Background bg;
@@ -11,7 +11,7 @@ float reflectionJitter   = 0.08; // Shimmer amount
 
 void setup() {
   size(800, 600);
-  storeFront = new StoreFrontUI();
+  storeFront = new StoreFront();
   logoBanner = new LogoBanner();
   glassPanels = new GlassPanels();
   bg = new Background();
