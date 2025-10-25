@@ -6,6 +6,7 @@ ColoredLine[] lines;
 
 void setup() {
   size(800, 600);
+  
   storeFront = new StoreFront();
   logoBanner = new LogoBanner();
   glassPanels = new GlassPanels();
@@ -29,7 +30,6 @@ void setup() {
   lines[8] = new ColoredLine(240, 450, 675, 450, color(15, 170, 24), 10);  // Horizontal green (midden tot rechterraam)
   lines[9] = new ColoredLine(675, 450, 675, 500, color(15, 170, 24), 10);  // Vertical green (rechterraam)
 
-
   noLoop();
 }
 
@@ -44,8 +44,8 @@ void draw() {
     l.display();
   }
   // Now adding lines to remove the sections that are outside of the window panels
-  stroke(50);       // Set stroke color to match storefront
-  strokeWeight(25); // Thickness to match masking intent
+  stroke(50);
+  strokeWeight(25);
   line(292, 200, 292, 500);
   line(502, 200, 502, 500);
 }
