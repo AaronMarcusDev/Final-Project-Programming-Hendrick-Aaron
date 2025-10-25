@@ -31,4 +31,26 @@ class Background {
       }
     }
   }
+
+  void drawPavement() {
+    // Pavement rectanlge
+    fill(100);
+    noStroke();
+    rect(0, 525, width, 120);
+
+
+    // Pavement lines
+    stroke(80);
+    strokeWeight(2);
+
+    for (int x = 20; x < width - 25; x += 50) {
+      line(x, 530, x, 600);
+    }
+
+    strokeWeight(1);
+
+    // Darker strip for curb?
+    fill(60);
+    rect(0, 530, width, 5);
+  }
 }

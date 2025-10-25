@@ -35,6 +35,7 @@ void setup() {
 void draw() {
   bg.drawBrickWall();
   storeFront.display();
+  bg.drawPavement();
   logoBanner.display();
   glassWall.display();
 
