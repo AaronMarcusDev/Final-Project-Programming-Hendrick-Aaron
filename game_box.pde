@@ -37,7 +37,6 @@ void draw() {
   storeFront.display();
   logoBanner.display();
   glassWall.display();
-
   for (ColoredLine l : lines) {
     l.display();
   }
