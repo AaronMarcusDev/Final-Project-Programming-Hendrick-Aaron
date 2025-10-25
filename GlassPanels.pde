@@ -1,4 +1,4 @@
-class GlassWall {
+class GlassPanels {
   void display() {
     int panelWidth = 180;
     int panelHeight = 300;

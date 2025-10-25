@@ -1,6 +1,6 @@
 StoreFront storeFront;
 LogoBanner logoBanner;
-GlassWall glassWall;
+GlassPanels glassPanels;
 Background bg;
 ColoredLine[] lines;
 
@@ -8,7 +8,7 @@ void setup() {
   size(800, 600);
   storeFront = new StoreFront();
   logoBanner = new LogoBanner();
-  glassWall = new GlassWall();
+  glassPanels = new GlassPanels();
   bg = new Background();
   lines = new ColoredLine[10];
 
@@ -37,7 +37,7 @@ void draw() {
   storeFront.display();
   bg.drawPavement();
   logoBanner.display();
-  glassWall.display();
+  glassPanels.display();
 
   for (ColoredLine l : lines) {
     l.display();
