@@ -11,7 +11,7 @@ void setup() {
 }
 
 void draw() {
-  background(30);
+  storeFront.drawBrickWall();
   storeFront.display();
   logoBanner.display();
   glassWall.display();
