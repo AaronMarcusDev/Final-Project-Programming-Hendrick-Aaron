@@ -3,7 +3,7 @@ class GlassWall {
     int panelWidth = 180;
     int panelHeight = 300;
     int spacing = 30;
-    int startX = 100 + spacing;
+    int startX = 20 + 77; // gecentreerd binnen gevel van 755px breed
 
     stroke(100, 200, 255, 100);
     fill(0, 0, 50, 150);

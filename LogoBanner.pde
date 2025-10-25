@@ -4,7 +4,7 @@ class LogoBanner {
 
   LogoBanner() {
     font = createFont("Arial Bold", 48);
-    blockColors = new color[]{
+    blockColors = new color[] {
       color(255, 165, 0), color(255, 255, 0), color(255, 0, 0),
       color(0, 128, 0), color(0, 255, 255), color(255, 105, 180),
       color(255, 255, 255), color(128, 0, 128), color(0, 255, 255)
