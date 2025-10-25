@@ -1,13 +1,17 @@
-StoreFront storeFront;
+StoreFrontUI storeFront;
 LogoBanner logoBanner;
 GlassPanels glassPanels;
 Background bg;
 ColoredLine[] lines;
 
+float reflectionStrength = 0.45; // Reflection strength
+float reflectionWidth    = 220;  // Reflection width
+float reflectionFeather  = 140;  // Softness
+float reflectionJitter   = 0.08; // Shimmer amount
+
 void setup() {
   size(800, 600);
-  
-  storeFront = new StoreFront();
+  storeFront = new StoreFrontUI();
   logoBanner = new LogoBanner();
   glassPanels = new GlassPanels();
   bg = new Background();
@@ -30,22 +34,30 @@ void setup() {
   lines[8] = new ColoredLine(240, 450, 675, 450, color(15, 170, 24), 10);  // Horizontal green (midden tot rechterraam)
   lines[9] = new ColoredLine(675, 450, 675, 500, color(15, 170, 24), 10);  // Vertical green (rechterraam)
 
-  noLoop();
+
+ //noLoop();
 }
 
 void draw() {
   bg.drawBrickWall();
-  storeFront.display();
   bg.drawPavement();
+ storeFront.display();
+ 
+  float viewer = constrain((float)mouseX / width, 0, 1);
+  float shimmer = (noise(frameCount * 0.01f) - 0.5f) * 2.0f;
+  float dynamicStrength = constrain(reflectionStrength + shimmer * reflectionJitter, 0, 1);
+
+
   logoBanner.display();
   glassPanels.display();
+  glassPanels.displayWithReflection(viewer, dynamicStrength, reflectionWidth, reflectionFeather);
 
   for (ColoredLine l : lines) {
     l.display();
   }
-  // Now adding lines to remove the sections that are outside of the window panels
-  stroke(50);
-  strokeWeight(25);
+  // Remove sections outside glass panels
+  stroke(50);       // Matches storefront color
+  strokeWeight(25); // Matching thickness to cover
   line(292, 200, 292, 500);
   line(502, 200, 502, 500);
 }
