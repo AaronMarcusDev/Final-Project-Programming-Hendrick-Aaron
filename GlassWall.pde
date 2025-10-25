@@ -17,11 +17,14 @@ class GlassWall {
     }
 
     // Neon tekst
-    textSize(24);
+    textSize(30);
     fill(0, 255, 255);
-    text("PLAY THAT GAME", width/2, 500);
+    text("PLAY", width/2, 300);
+    text("THAT ", width/2, 325);
+    text("GAME", width/2, 350);
+
     textSize(16);
     fill(255, 100, 255);
-    text("THEGAMEBOX.NL", width/2, 525);
+    text("THEGAMEBOX.NL", width/2, 480);
   }
 }
