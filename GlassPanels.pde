@@ -3,7 +3,7 @@ class GlassPanels {
     int panelWidth = 180;
     int panelHeight = 300;
     int spacing = 30;
-    int startX = 20 + 77; // gecentreerd binnen gevel van 755px breed
+    int startX = 20 + 77; // centered with 755px width
 
     stroke(100, 200, 255, 100);
     fill(0, 0, 50, 150);
@@ -16,7 +16,9 @@ class GlassPanels {
       line(x + 10, y + 10, x + panelWidth - 40, y + panelHeight - 10);
     }
 
-    // Neon tekst
+    fill(0);
+
+    // Neon text
     textSize(30);
     fill(0, 255, 255);
     text("PLAY", width/2, 300);
