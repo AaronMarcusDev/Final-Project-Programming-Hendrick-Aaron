@@ -1,3 +1,3 @@
 # The goal is to remake this in processing!
 
-![storefront](storefront.jpg)
+![storefront](./images/storefront.jpg)
