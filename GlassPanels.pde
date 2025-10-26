@@ -1,45 +1,45 @@
 class GlassPanels {
   void display() {
-    int panelWidth = 180;
-    int panelHeight = 300;
-    int spacing = 30;
-    int startX = 20 + 77; // centered with 755px width
+    int panelWidth = 180;     // Width of each glass panel
+    int panelHeight = 300;    // Height of each glass panel
+    int spacing = 30;         // Space between panels
+    int startX = 20 + 77;     // Left margin + centering offset (for 755px wide storefront)
 
-    stroke(100, 200, 255, 100);
-    fill(0, 0, 50, 150);
+    stroke(100, 200, 255, 100); // Light blue stroke with transparency
+    fill(0, 0, 50, 150);        // Dark blue fill with transparency
 
     for (int i = 0; i < 3; i++) {
-      int x = startX + i * (panelWidth + spacing);
-      int y = 200;
+      int x = startX + i * (panelWidth + spacing); // X position of each panel
+      int y = 200;                                  // Y position (top of panels)
 
-      rect(x, y, panelWidth, panelHeight);
-      line(x + 10, y + 10, x + panelWidth - 40, y + panelHeight - 10);
+      rect(x, y, panelWidth, panelHeight);         // Draw the panel
+      line(x + 10, y + 10, x + panelWidth - 40, y + panelHeight - 10); // Diagonal reflection line
     }
 
+    // Neon text overlay
     fill(0);
-
-    // Neon text
     textSize(30);
-    fill(0, 255, 255);
+    fill(0, 255, 255);         // Cyan glow
     text("PLAY", width/2, 300);
     text("THAT ", width/2, 325);
     text("GAME", width/2, 350);
 
     textSize(16);
-    fill(255, 100, 255);
+    fill(255, 100, 255);       // Pink accent
     text("THEGAMEBOX.NL", width/2, 480);
   }
 
+
   // Draws panels and reflections
   void displayWithReflection(float viewerNorm, float opacity, float bandWidth, float feather) {
-    //Repeat from display
-    int panelWidth  = 180;
+    // Panel layout settings
+    int panelWidth = 180;
     int panelHeight = 300;
-    int spacing     = 30;
-    int startX      = 20 + 77; // centered with 755px width
-    int y           = 200;
+    int spacing = 30;
+    int startX = 97; // 20 + 77
+    int y = 200;
 
-    // Repeat from display
+    // Draw panels and diagonal lines
     stroke(100, 200, 255, 100);
     fill(0, 0, 50, 150);
     for (int i = 0; i < 3; i++) {
@@ -48,55 +48,56 @@ class GlassPanels {
       line(x + 10, y + 10, x + panelWidth - 40, y + panelHeight - 10);
     }
 
-    // Relfection inside panels
+    // Reflection band center based on viewer position
     float bandCenterX = viewerNorm * width;
+
+    // Draw reflection strips
     pushStyle();
-    blendMode(ADD);
+    blendMode(ADD); // glow effect
     noStroke();
 
     for (int i = 0; i < 3; i++) {
-      int gx = startX + i * (panelWidth + spacing);
-      int gy = y;
-      int gw = panelWidth;
-      int gh = panelHeight;
+      int panelX = startX + i * (panelWidth + spacing);
+      int steps = 20; // number of strips per panel
 
-      int steps = max(12, gw / 4);            // Gradient resolution
       for (int s = 0; s < steps; s++) {
-        float t  = (s + 0.5f) / steps;
-        float cx = gx + t * gw;
+        float t = (s + 0.5f) / steps;
+        float stripX = panelX + t * panelWidth;
 
-        float d     = abs(cx - bandCenterX);
-        float inner = bandWidth * 0.5f;
+        // Distance from viewer center
+        float distance = abs(stripX - bandCenterX);
+        float inner = bandWidth / 2;
         float outer = inner + feather;
 
-        float a;
-        if (d <= inner)      a = 1.0f;
-        else if (d >= outer) a = 0.0f;
-        else {
-          float u = (d - inner) / (outer - inner);
-          a = 1.0f - (u*u*(3 - 2*u));         // smoothstep fade
+        // Calculate alpha with smooth fade
+        float alpha = 0;
+        if (distance <= inner) {
+          alpha = 255 * opacity;
+        } else if (distance < outer) {
+          float fade = (distance - inner) / (outer - inner);
+          alpha = 255 * opacity * (1 - fade * fade * (3 - 2 * fade)); // smoothstep
         }
 
-        float alpha = 255 * a * opacity;
-        fill(170, 200, 255, alpha);           // Subtle tinted reflection
-
-        float stripW = gw / steps + 1;        // Avoids gaps
-        rect(cx - stripW * 0.5f, gy, stripW, gh);
+        // Draw strip
+        fill(170, 200, 255, alpha);
+        float stripW = panelWidth / steps + 1;
+        rect(stripX - stripW / 2, y, stripW, panelHeight);
       }
     }
+
     popStyle();
 
-    // Repeat from display
-    fill(0);
+    // Neon text overlay
+    textAlign(CENTER, CENTER);
     textSize(30);
     fill(0, 255, 255);
-    textAlign(CENTER, CENTER);
-    text("PLAY", width/2, 300);
-    text("THAT", width/2, 325);
-    text("GAME", width/2, 350);
+    text("PLAY", width / 2, 300);
+    text("THAT", width / 2, 325);
+    text("GAME", width / 2, 350);
 
     textSize(16);
     fill(255, 100, 255);
-    text("THEGAMEBOX.NL", width/2, 480);
+    text("THEGAMEBOX.NL", width / 2, 480);
   }
 }
+
