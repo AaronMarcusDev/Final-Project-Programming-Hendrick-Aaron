@@ -7,3 +7,6 @@
 
 ## Result
 ![storefront](./images/result.jpg)
+
+## Report
+You can find our report in the folder 'report' (that should make sense)
