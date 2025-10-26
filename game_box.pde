@@ -1,3 +1,9 @@
+/*
+The Game Box Store in Enschede recreated in Processing for the programming M1 final assignment
+By Hendrick Landeweerd & Aaron Struikenkamp
+
+*/
+
 /* Classes used */
 StoreFront storeFront;
 LogoBanner logoBanner;
