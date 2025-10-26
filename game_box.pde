@@ -40,18 +40,17 @@ void setup() {
 
 void draw() {
   bg.drawBrickWall();
-  bg.drawPavement();
   storeFront.display();
-
+  
   float viewer = constrain((float)mouseX / width, 0, 1);
   float shimmer = (noise(frameCount * 0.01f) - 0.5f) * 2.0f;
   float dynamicStrength = constrain(reflectionStrength + shimmer * reflectionJitter, 0, 1);
-
-
+  
+  
   logoBanner.display();
   glassPanels.display();
   glassPanels.displayWithReflection(viewer, dynamicStrength, reflectionWidth, reflectionFeather);
-
+  
   for (ColoredLine l : lines) {
     l.display();
   }
@@ -60,9 +59,11 @@ void draw() {
   strokeWeight(25); // Matching thickness to cover
   line(292, 200, 292, 500);
   line(502, 200, 502, 500);
+  bg.drawPavement();
 }
 
 void mousePressed() {
-  if (logoBanner != null) logoBanner.handleClick();
+  // if (logoBanner != null) 
+  logoBanner.handleClick();
 }
 
