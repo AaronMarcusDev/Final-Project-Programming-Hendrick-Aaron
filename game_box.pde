@@ -4,6 +4,9 @@ GlassPanels glassPanels;
 Background bg;
 ColoredLine[] lines;
 Reflection reflection;
+Bicycle bike;
+
+boolean moving = false;
 
 void setup() {
   size(800, 600);
@@ -13,6 +16,7 @@ void setup() {
   bg = new Background();
   lines = new ColoredLine[10];
   reflection = new Reflection();
+  bike = new Bicycle(-60, 570, 4.0);
 
   // Geel: horizontaal over alle ramen, verticaal aan rechterrand van rechterraam
   lines[0] = new ColoredLine(580, 210, 580, 400, color(255, 255, 0), 20);  // Vertical yellow (rechterrand van rechterraam)
@@ -38,6 +42,16 @@ void setup() {
 void draw() {
   bg.drawBrickWall();
   storeFront.display();
+  bike.display();
+
+  if (moving) {
+   bike.update();
+   if (bike.isOffRight()) {
+     moving = false;
+     bike = new Bicycle(-60, 570, 4.0);
+     noLoop();
+   }
+ }
 
   float viewer = constrain((float)mouseX / width, 0, 1);
   float shimmer = (noise(frameCount * 0.01f) - 0.5f) * 2.0f;
@@ -64,3 +78,9 @@ void mousePressed() {
   logoBanner.handleClick();
 }
 
+void keyPressed() {
+  if (key == ' ') {
+    moving = true;
+    loop();
+  }
+}
