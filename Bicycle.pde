@@ -18,7 +18,7 @@ class Bicycle {
     return x - r > width + 60;
   }
   
-  void display() {
+  void display(color shirtColor) {
     //Wheels
     noFill();
     stroke(0);
@@ -59,7 +59,7 @@ class Bicycle {
     
     //Shirt and colour
     noStroke();
-    fill(0, 100, 255);
+    fill(shirtColor);
     rect(bodyBaseX - 6, bodyBaseY - bodyHeight, 12,bodyHeight - 5);
 
     //Seat and Handlebar

@@ -7,6 +7,7 @@ Reflection reflection;
 Bicycle bike;
 
 boolean moving = false;
+color bikerShirtColor;
 
 void setup() {
   size(800, 600);
@@ -61,21 +62,20 @@ void draw() {
   line(292, 200, 292, 500);
   line(502, 200, 502, 500);
   bg.drawPavement();
-    bike.display();
+  bike.display(bikerShirtColor);
 
   if (moving) {
-   bike.update();
-   if (bike.isOffRight()) {
-     moving = false;
-     bike = new Bicycle(-60, 570, 4.0);
-     noLoop();
-   }
- }
+    bike.update();
+    if (bike.isOffRight()) {
+      moving = false;
+      bike = new Bicycle(-60, 570, 4.0);
+      noLoop();
+    }
+  }
 }
 
 void mousePressed() {
-  // if (logoBanner != null)
-  logoBanner.handleClick();
+  bikerShirtColor = logoBanner.handleClick();
 }
 
 void keyPressed() {

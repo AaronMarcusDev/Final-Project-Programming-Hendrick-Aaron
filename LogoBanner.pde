@@ -45,7 +45,7 @@ class LogoBanner {
     line(22, 180, width - 27, 180);
   }
 
-  void handleClick() {
+  color handleClick() {
     int gridsize = 150;
     int blocksize = gridsize / 9;
     int startX = width/2 - 150 + 60;
@@ -59,8 +59,10 @@ class LogoBanner {
 
       if (index >= 0 && index < blockColors.length) {
         titleColor = blockColors[index];
+        return blockColors[index]; // we return this value to use it for the bikers' shirt
       }
     }
+    return color(0);
   }
 }
 
