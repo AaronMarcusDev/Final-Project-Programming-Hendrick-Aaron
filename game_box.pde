@@ -72,7 +72,7 @@ void draw() {
   dynamicStrength = constrain(dynamicStrength, 0, 1);
 
   logoBanner.display();
-  glassPanels.display();
+  // glassPanels.display();
   glassPanels.displayWithReflection(viewer, dynamicStrength, reflection.width, reflection.feather);
 
 
