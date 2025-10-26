@@ -5,9 +5,11 @@ Background bg;
 ColoredLine[] lines;
 Reflection reflection;
 Bicycle bike;
+Popup popup;
 
 boolean moving = false;
 color bikerShirtColor;
+int popupStartTime;
 
 void setup() {
   size(800, 600);
@@ -15,9 +17,11 @@ void setup() {
   logoBanner = new LogoBanner();
   glassPanels = new GlassPanels();
   bg = new Background();
+  popup = new Popup();
   lines = new ColoredLine[10];
   reflection = new Reflection();
   bike = new Bicycle(-60, 570, 4.0);
+  popupStartTime = millis();
 
   // Geel: horizontaal over alle ramen, verticaal aan rechterrand van rechterraam
   lines[0] = new ColoredLine(580, 210, 580, 400, color(255, 255, 0), 20);  // Vertical yellow (rechterrand van rechterraam)
@@ -53,6 +57,7 @@ void draw() {
   glassPanels.display();
   glassPanels.displayWithReflection(viewer, dynamicStrength, reflection.width, reflection.feather);
 
+
   for (ColoredLine l : lines) {
     l.display();
   }
@@ -61,6 +66,12 @@ void draw() {
   strokeWeight(25); // Matching thickness to cover
   line(292, 200, 292, 500);
   line(502, 200, 502, 500);
+
+  if (millis() - popupStartTime < 7000) {
+    //                              ^-- 7 Seconds
+    popup.showMessage("Click a colored square in the logo to choose a color.\nPress SPACE to summon a biker from Enschede!");
+  }
+  
   bg.drawPavement();
   bike.display(bikerShirtColor);
 
