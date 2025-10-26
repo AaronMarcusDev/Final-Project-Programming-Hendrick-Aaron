@@ -3,11 +3,7 @@ LogoBanner logoBanner;
 GlassPanels glassPanels;
 Background bg;
 ColoredLine[] lines;
-
-float reflectionStrength = 0.45; // Reflection strength
-float reflectionWidth    = 220;  // Reflection width
-float reflectionFeather  = 140;  // Softness
-float reflectionJitter   = 0.08; // Shimmer amount
+Reflection reflection;
 
 void setup() {
   size(800, 600);
@@ -16,6 +12,7 @@ void setup() {
   glassPanels = new GlassPanels();
   bg = new Background();
   lines = new ColoredLine[10];
+  reflection = new Reflection();
 
   // Geel: horizontaal over alle ramen, verticaal aan rechterrand van rechterraam
   lines[0] = new ColoredLine(580, 210, 580, 400, color(255, 255, 0), 20);  // Vertical yellow (rechterrand van rechterraam)
@@ -41,16 +38,16 @@ void setup() {
 void draw() {
   bg.drawBrickWall();
   storeFront.display();
-  
+
   float viewer = constrain((float)mouseX / width, 0, 1);
   float shimmer = (noise(frameCount * 0.01f) - 0.5f) * 2.0f;
-  float dynamicStrength = constrain(reflectionStrength + shimmer * reflectionJitter, 0, 1);
-  
-  
+  float dynamicStrength = constrain(reflection.strength + shimmer * reflection.jitter, 0, 1);
+
+
   logoBanner.display();
   glassPanels.display();
-  glassPanels.displayWithReflection(viewer, dynamicStrength, reflectionWidth, reflectionFeather);
-  
+  glassPanels.displayWithReflection(viewer, dynamicStrength, reflection.width, reflection.feather);
+
   for (ColoredLine l : lines) {
     l.display();
   }
@@ -63,7 +60,7 @@ void draw() {
 }
 
 void mousePressed() {
-  // if (logoBanner != null) 
+  // if (logoBanner != null)
   logoBanner.handleClick();
 }
 

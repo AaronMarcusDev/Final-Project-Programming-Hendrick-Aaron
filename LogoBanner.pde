@@ -40,7 +40,7 @@ class LogoBanner {
     text("GAME BOX", width/2 + 100, 140);
 
     // Donkergrijze lijn
-    stroke(0);
+    stroke(30);
     strokeWeight(5);
     line(22, 180, width - 27, 180);
   }
