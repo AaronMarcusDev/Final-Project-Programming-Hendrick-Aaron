@@ -1,8 +1,11 @@
-/*
+/* ----------------------------------------------------------------------------------------------
+
 The Game Box Store in Enschede recreated in Processing for the programming M1 final assignment
 By Hendrick Landeweerd & Aaron Struikenkamp
 
-*/
+GitHub Repository: https://github.com/AaronMarcusDev/Final-Project-Programming-Hendrick-Aaron
+
+------------------------------------------------------------------------------------------------- */
 
 /* Classes used */
 StoreFront storeFront;
@@ -64,8 +67,8 @@ void draw() {
   viewer = constrain(viewer, 0, 1); // just to be safe
 
   // Create a shimmer effect that changes over time
-  float noiseValue = noise(frameCount * 0.01f); // smooth random value
-  float shimmer = (noiseValue - 0.5f) * 2.0f;   // range: -1 to +1
+  float noiseValue = noise(frameCount * 0.01); // smooth random value
+  float shimmer = (noiseValue - 0.5) * 2.0;   // range: -1 to +1
 
   // Adjust reflection strength with shimmer, limited to 0–1
   float dynamicStrength = reflection.strength + shimmer * reflection.jitter;
@@ -81,6 +84,7 @@ void draw() {
   }
 
   // Remove sections outside glass panels
+  // (just covering them with lines the same colour as the storefront)
   stroke(50);
   strokeWeight(25); // Matching thickness to cover
   line(292, 200, 292, 500);

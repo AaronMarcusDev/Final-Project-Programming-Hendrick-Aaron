@@ -10,7 +10,5 @@ class Popup {
     textAlign(CENTER, CENTER);
     textSize(16);
     text(message, 400, 260);
-
-    //"Click a colored square in the logo to choose a color.\nPress SPACE to summon a biker from Enschede!",
   }
 }

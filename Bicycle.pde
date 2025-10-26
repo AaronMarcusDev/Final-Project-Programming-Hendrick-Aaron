@@ -25,7 +25,6 @@ class Bicycle {
     strokeWeight(3);
     ellipse(x, wheelCenterY, 2*r, 2*r);  //Rear
     ellipse(x + 80, wheelCenterY, 2*r, 2*r);  //Front
-
     
     //Frame
     line(x, wheelCenterY, x + 35, wheelCenterY - 25);

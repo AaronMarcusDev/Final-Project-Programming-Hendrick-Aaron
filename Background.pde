@@ -1,5 +1,4 @@
 class Background {
-
   void drawBrickWall() {
     int brickW = 50;
     int brickH = 25;
@@ -37,7 +36,6 @@ class Background {
     fill(100);
     noStroke();
     rect(0, 525, width, 120);
-
 
     // Pavement lines
     stroke(80);
