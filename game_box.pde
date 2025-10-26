@@ -42,16 +42,6 @@ void setup() {
 void draw() {
   bg.drawBrickWall();
   storeFront.display();
-  bike.display();
-
-  if (moving) {
-   bike.update();
-   if (bike.isOffRight()) {
-     moving = false;
-     bike = new Bicycle(-60, 570, 4.0);
-     noLoop();
-   }
- }
 
   float viewer = constrain((float)mouseX / width, 0, 1);
   float shimmer = (noise(frameCount * 0.01f) - 0.5f) * 2.0f;
@@ -71,6 +61,16 @@ void draw() {
   line(292, 200, 292, 500);
   line(502, 200, 502, 500);
   bg.drawPavement();
+    bike.display();
+
+  if (moving) {
+   bike.update();
+   if (bike.isOffRight()) {
+     moving = false;
+     bike = new Bicycle(-60, 570, 4.0);
+     noLoop();
+   }
+ }
 }
 
 void mousePressed() {
