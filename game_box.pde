@@ -35,14 +35,14 @@ void setup() {
   lines[9] = new ColoredLine(675, 450, 675, 500, color(15, 170, 24), 10);  // Vertical green (rechterraam)
 
 
- //noLoop();
+  //noLoop();
 }
 
 void draw() {
   bg.drawBrickWall();
   bg.drawPavement();
- storeFront.display();
- 
+  storeFront.display();
+
   float viewer = constrain((float)mouseX / width, 0, 1);
   float shimmer = (noise(frameCount * 0.01f) - 0.5f) * 2.0f;
   float dynamicStrength = constrain(reflectionStrength + shimmer * reflectionJitter, 0, 1);
@@ -65,3 +65,4 @@ void draw() {
 void mousePressed() {
   if (logoBanner != null) logoBanner.handleClick();
 }
+

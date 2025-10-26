@@ -48,18 +48,19 @@ class LogoBanner {
   void handleClick() {
     int gridsize = 150;
     int blocksize = gridsize / 9;
-    int startX = width/s - 150 + 60;
+    int startX = width/2 - 150 + 60;
     int startY = 115;
 
     if (mouseX >= startX && mouseX < startX + 3*blocksize &&
-        mouseY >= startY && mouseY < startY + 3*blocksize) {
+      mouseY >= startY && mouseY < startY + 3*blocksize) {
       int col = (mouseX - startX) / blocksize;
       int row = (mouseY - startY) / blocksize;
       int index = row * 3 + col;
 
-    if (index >= 0 && index < blockColors.length) {
-      titleColor = blockColors[index];
+      if (index >= 0 && index < blockColors.length) {
+        titleColor = blockColors[index];
+      }
     }
   }
 }
-}
+
