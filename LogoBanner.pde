@@ -2,6 +2,8 @@ class LogoBanner {
   PFont font;
   color[] blockColors;
 
+  color titleColor = color(255); //Starts it at white
+
   LogoBanner() {
     font = createFont("Arial Bold", 48);
     blockColors = new color[] {
@@ -14,7 +16,7 @@ class LogoBanner {
   void display() {
     textFont(font);
     textAlign(CENTER, CENTER);
-    fill(255);
+    fill(titleColor);
     textSize(48);
     text("THE", width/2 - 150, 140);
 
@@ -34,7 +36,7 @@ class LogoBanner {
     }
 
     // GAME BOX tekst
-    fill(255);
+    fill(titleColor);
     text("GAME BOX", width/2 + 100, 140);
 
     // Donkergrijze lijn
@@ -42,4 +44,22 @@ class LogoBanner {
     strokeWeight(5);
     line(22, 180, width - 27, 180);
   }
+
+  void handleClick() {
+    int gridsize = 150;
+    int blocksize = gridsize / 9;
+    int startX = width/s - 150 + 60;
+    int startY = 115;
+
+    if (mouseX >= startX && mouseX < startX + 3*blocksize &&
+        mouseY >= startY && mouseY < startY + 3*blocksize) {
+      int col = (mouseX - startX) / blocksize;
+      int row = (mouseY - startY) / blocksize;
+      int index = row * 3 + col;
+
+    if (index >= 0 && index < blockColors.length) {
+      titleColor = blockColors[index];
+    }
+  }
+}
 }

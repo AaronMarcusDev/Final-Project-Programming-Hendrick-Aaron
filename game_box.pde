@@ -61,3 +61,7 @@ void draw() {
   line(292, 200, 292, 500);
   line(502, 200, 502, 500);
 }
+
+void mousePressed() {
+  if (logoBanner != null) logoBanner.handleClick();
+}
